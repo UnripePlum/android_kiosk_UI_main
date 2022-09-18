@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable-v24/step_new_13_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable-v24/step_new_14_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable-v24/step_new_15_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable-v24/step_new_16_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/dessert_resize.xml" value="0.19" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/drink_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/hamburger_resize.xml" value="0.19" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/loop_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/pageback_drawable.xml" value="0.19" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/pagenext_drawable.xml" value="0.19" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/recycle_count_button_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button1.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button2.xml" value="0.1955" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button3.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button4..xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button4.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button45.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button5.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button6.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button7.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/selector_radio_button8.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step1_01_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step1_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_01_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_02_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_03_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_04_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_05_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_06_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_07_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_08_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_09_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_10_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_11_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable/step_new_12_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/activity_loop.xml" value="0.12" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/activity_main.xml" value="0.15" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/activity_order_sheet.xml" value="0.14" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/dialog_fragment.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_cart.xml" value="0.14" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu1.xml" value="0.1" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_dess1.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_dess2.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_dess3.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_dess4.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_drink1.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_drink2.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_fragment1_1.xml" value="0.1" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_ham1.xml" value="0.1" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_ham2.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_reco1.xml" value="0.15" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_reco2.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_menu_reco3.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/fragment_sample_dialog.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/ordersheetframe.xml" value="0.18" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/layout/recycleframe.xml" value="0.22" />
+        <entry key="..\:/HandiClever/kiosk/app/src/main/res/menu/recomenu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

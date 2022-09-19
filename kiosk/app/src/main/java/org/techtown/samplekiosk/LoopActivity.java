@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 
+import org.techtown.samplekiosk.NormalActivity.NormalActivity;
+import org.techtown.samplekiosk.OldActivity.OldActivity;
+
 public class LoopActivity extends AppCompatActivity {
 
-
+    private final int MODE_NORMAL = 0;
+    private final int MODE_OLD = 1;
+    private final int MODE_BLIND = 2;
+    public int mode = MODE_OLD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +28,19 @@ public class LoopActivity extends AppCompatActivity {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 //손가락으로 화면을 누르기 시작했을 때 할 일
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = null;
+                switch (mode){
+                    case MODE_NORMAL:
+                        intent = new Intent(getApplicationContext(), NormalActivity.class);
+                        break;
+                    case MODE_OLD:
+                        intent = new Intent(getApplicationContext(), OldActivity.class);
+                        break;
+                    case MODE_BLIND:
+                        intent = new Intent(getApplicationContext(), OldActivity.class);
+                        break;
+                }
+
                 startActivity(intent);
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -39,4 +57,6 @@ public class LoopActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
 }

@@ -21,7 +21,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1056dp"
+        android:layout_height="978dp"
         android:orientation="horizontal">
 
         <Button

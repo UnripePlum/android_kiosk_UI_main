@@ -1,4 +1,4 @@
-package org.techtown.samplekiosk;
+package org.techtown.samplekiosk.NormalActivity;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,24 +11,26 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import org.techtown.samplekiosk.R;
 
-public class MenuHam2 extends Fragment {
+
+public class Menudrink2 extends Fragment {
+
 
     int NumButtonInPage = 8;
     int curPage = 2;
     int index = NumButtonInPage * (curPage - 1);
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menu_ham2, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menu_drink2, container, false);
         Button[] buttons = {null,null,null,null,null,null,null,null};
         Resources res = getResources();
-        String[] titles = res.getStringArray(R.array.burgertitles);
-        int[] costs = res.getIntArray(R.array.burgercosts);
-        TypedArray images = res.obtainTypedArray(R.array.burgerimages);
+        String[] titles = res.getStringArray(R.array.drinktitles);
+        int[] costs = res.getIntArray(R.array.drinkcosts);
+        TypedArray images = res.obtainTypedArray(R.array.drinkimages);
 
         int[] buttonsId = {R.id.button, R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7};
         for(int i=0;i<=7;i++){
@@ -36,8 +38,9 @@ public class MenuHam2 extends Fragment {
             if(buttons[i] == null) continue;
             if(i+index >= titles.length) continue;
 
+
             // button 설정 과정
-            int draw = images.getResourceId(i+index, R.array.burgerimages);
+            int draw = images.getResourceId(i+index, R.array.drinkimages);
             buttons[i].setCompoundDrawablesWithIntrinsicBounds(draw, 0,0,0);
             buttons[i].setText(titles[i+index] + "\n" + costs[i+index]);
 
@@ -47,14 +50,14 @@ public class MenuHam2 extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    MainActivity mainActivity = (MainActivity) getActivity();
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    NormalActivity normalActivity = (NormalActivity) getActivity();
+                    Intent intent = new Intent(getActivity(), NormalActivity.class);
 
                     Data data = new Data(titles[id+index], 1, costs[id+index]);
 
                     intent.putExtra("button" + id,data);
 
-                    mainActivity.makeToast(intent);
+                    normalActivity.makeToast(intent);
 
 
 

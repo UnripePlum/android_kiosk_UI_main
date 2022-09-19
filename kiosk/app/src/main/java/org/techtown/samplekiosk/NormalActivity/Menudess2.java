@@ -1,4 +1,4 @@
-package org.techtown.samplekiosk;
+package org.techtown.samplekiosk.NormalActivity;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,19 +11,21 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import org.techtown.samplekiosk.R;
 
-public class Menudess1 extends Fragment {
 
+public class Menudess2 extends Fragment {
 
     int NumButtonInPage = 8;
-    int curPage = 1;
+    int curPage = 2;
     int index = NumButtonInPage * (curPage - 1);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menu_dess1, container, false);
+
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menu_dess2, container, false);
         Button[] buttons = {null,null,null,null,null,null,null,null};
         Resources res = getResources();
         String[] titles = res.getStringArray(R.array.desserttitles);
@@ -35,8 +37,6 @@ public class Menudess1 extends Fragment {
             buttons[i] = rootView.findViewById(buttonsId[i]);
             if(buttons[i] == null) continue;
             if(i+index >= titles.length) continue;
-
-
             // button 설정 과정
             int draw = images.getResourceId(i+index, R.array.dessertimages);
             buttons[i].setCompoundDrawablesWithIntrinsicBounds(draw, 0,0,0);
@@ -48,14 +48,14 @@ public class Menudess1 extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    MainActivity mainActivity = (MainActivity) getActivity();
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    NormalActivity normalActivity = (NormalActivity) getActivity();
+                    Intent intent = new Intent(getActivity(), NormalActivity.class);
 
                     Data data = new Data(titles[id+index], 1, costs[id+index]);
 
                     intent.putExtra("button" + id,data);
 
-                    mainActivity.makeToast(intent);
+                    normalActivity.makeToast(intent);
 
 
 

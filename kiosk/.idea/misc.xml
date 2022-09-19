@@ -3,6 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/drawable/back_icon_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/drawable/dessert_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/drawable/drink_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/drawable/home_icon_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/drawable/next_icon_resize.xml" value="0.211" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/activity_loop.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/activity_main_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/activity_order_sheet_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_cart.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_cart_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_dess1_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_dess2_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_dess3_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_dess4.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_dess4_old.xml" value="0.24290123456790125" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_drink1_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_drink2_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_ham1.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_ham1_old.xml" value="0.18" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_ham2.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_ham2_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_reco1.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_menu_reco1_old.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/fragment_sample_dialog.xml" value="0.12204861111111111" />
+        <entry key="..\:/HandiClever/android_kiosk_UI/kiosk/app/src/main/res/layout/recycleframeold.xml" value="0.14" />
         <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable-v24/step_new_13_resize.xml" value="0.211" />
         <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable-v24/step_new_14_resize.xml" value="0.211" />
         <entry key="..\:/HandiClever/kiosk/app/src/main/res/drawable-v24/step_new_15_resize.xml" value="0.211" />

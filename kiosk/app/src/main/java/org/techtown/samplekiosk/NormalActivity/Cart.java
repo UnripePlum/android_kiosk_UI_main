@@ -1,6 +1,4 @@
-package org.techtown.samplekiosk;
-
-import static java.lang.System.in;
+package org.techtown.samplekiosk.NormalActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +14,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.time.LocalTime;
+import org.techtown.samplekiosk.LoopActivity;
+import org.techtown.samplekiosk.OldActivity.OldActivity;
+import org.techtown.samplekiosk.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.datatype.Duration;
 
 
 public class Cart extends Fragment {
@@ -41,8 +39,16 @@ public class Cart extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        ViewGroup rootView = null;
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart, container, false);
+        if(getActivity().getClass() == NormalActivity.class){
+            rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart, container, false);
+        }
+        else if(getActivity().getClass() == OldActivity.class){
+            rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart_old, container, false);
+        }
+
+
         totalCount = rootView.findViewById(R.id.totalCount);
         totalCost = rootView.findViewById(R.id.totalcost);
         Button cancelButton = rootView.findViewById(R.id.cancelButton);
@@ -54,7 +60,13 @@ public class Cart extends Fragment {
         recyclerView = rootView.findViewById(R.id.recyclerView);
         board_dataList = new ArrayList<>();
 
-        boardAdapter = new BoardAdapter(getActivity(), board_dataList, board_data, rule, this);
+        if(getActivity().getClass() == NormalActivity.class){
+            boardAdapter = new BoardAdapter(getActivity(), board_dataList, board_data, rule, this, 0);
+        }
+        else if(getActivity().getClass() == OldActivity.class){
+            boardAdapter = new BoardAdapter(getActivity(), board_dataList, board_data, rule, this, 1);
+        }
+
         recyclerView.setAdapter(boardAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -71,7 +83,14 @@ public class Cart extends Fragment {
             @Override
             public void onClick(View view) {
                 String orderData = "";
-                Intent intent = new Intent(getActivity(), OrderSheet.class);
+                Intent intent = new Intent(getActivity(), OldOrderSheet.class);
+//                if(getActivity().getClass() == NormalActivity.class){
+//                    intent = new Intent(getActivity(), OrderSheet.class);
+//                }
+//                else if(getActivity().getClass() == OldActivity.class){
+//                    intent = new Intent(getActivity(), OldOrderSheet.class);
+//                }
+
                 intent.putExtra("getItemCount", boardAdapter.getItemCount());
                 for(int i = 0; i<boardAdapter.getItemCount();i++){
                     Board buf = boardAdapter.getItem(i);

@@ -1,30 +1,22 @@
-package org.techtown.samplekiosk;
+package org.techtown.samplekiosk.NormalActivity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
+import org.techtown.samplekiosk.R;
 
-public class MainActivity extends AppCompatActivity {
+public class NormalActivity extends AppCompatActivity {
     Cart cart = new Cart();
     ViewPager2 pager;
     TabLayout tabs;

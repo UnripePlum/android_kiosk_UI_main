@@ -1,24 +1,18 @@
-package org.techtown.samplekiosk;
+package org.techtown.samplekiosk.NormalActivity;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import org.techtown.samplekiosk.R;
 
 
 public class MenuReco1 extends Fragment {
@@ -55,14 +49,14 @@ public class MenuReco1 extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    MainActivity mainActivity = (MainActivity) getActivity();
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    NormalActivity normalActivity = (NormalActivity) getActivity();
+                    Intent intent = new Intent(getActivity(), NormalActivity.class);
 
                     Data data = new Data(titles[id+index], 1, costs[id+index]);
 
                     intent.putExtra("button" + id,data);
 
-                    mainActivity.makeToast(intent);
+                    normalActivity.makeToast(intent);
 
 
 

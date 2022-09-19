@@ -1,4 +1,4 @@
-package org.techtown.samplekiosk;
+package org.techtown.samplekiosk.NormalActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -8,19 +8,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
-import org.techtown.samplekiosk.MainActivity;
-
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.LoggingPermission;
+import org.techtown.samplekiosk.LoopActivity;
 
 
 public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {

@@ -5,4 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loop_resize"
-    tools:context=".LoopActivity" />
+    tools:context=".LoopActivity" >
+
+    <Button
+        android:id="@+id/buttonMODE_NORMAL"
+        android:layout_width="507dp"
+        android:layout_height="160dp"
+        android:padding="20dp"
+        android:text="MODE_NORMAL"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.848" />
+
+    <Button
+        android:id="@+id/buttonMODE_OLD"
+        android:layout_width="507dp"
+        android:layout_height="160dp"
+        android:padding="20dp"
+        android:text="MODE_OLD"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMODE_NORMAL"
+        app:layout_constraintVertical_bias="0.296" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

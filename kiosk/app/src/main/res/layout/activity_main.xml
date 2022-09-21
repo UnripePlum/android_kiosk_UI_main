@@ -36,11 +36,25 @@
             android:text="이전"
             android:textSize="25dp" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pager"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3" />
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="994dp" />
+
+            <RadioGroup
+                android:id="@+id/radioPage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/buttonNext"

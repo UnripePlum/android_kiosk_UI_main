@@ -24,21 +24,34 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public int totalcost = 0;
     public int totalcount = 0;
     private int buttonPosition;
+    int mode = -1;
 
+    private final int MODE_NORMAL = 0;
+    private final int MODE_OLD = 1;
+    private final int MODE_BLIND = 2;
 
-    public OrderAdapter(Context context, List<Board> datas, Map<String, Board> dict, Map<String, Integer> rule) {
+    public OrderAdapter(Context context, List<Board> datas, Map<String, Board> dict, Map<String, Integer> rule, int mode) {
         this.context = context;
         this.datas = datas;
         this.dict = dict;
         this.rule = rule;
-
+        this.mode = mode;
     }
 
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // ViewHodler 객체를 생성 후 리턴한다.
+        switch (mode){
+            case MODE_NORMAL:
+                return new OrderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.ordersheetframe, parent, false));
+            case MODE_OLD:
+                return new OrderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.ordersheetframe_old, parent, false));
+            case MODE_BLIND:
+//                return new BoardViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleframeblind, parent, false));
+        }
+        return null;
 
-        return new OrderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.ordersheetframe, parent, false));
+
     }
 
     @Override

@@ -33,7 +33,7 @@ public class Cart extends Fragment {
     TextView totalCount;
     TextView totalCost;
     int size = 0;
-
+    int mode = -1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,11 +61,13 @@ public class Cart extends Fragment {
         board_dataList = new ArrayList<>();
 
         if(getActivity().getClass() == NormalActivity.class){
-            boardAdapter = new BoardAdapter(getActivity(), board_dataList, board_data, rule, this, 0);
+            mode = 0;
         }
         else if(getActivity().getClass() == OldActivity.class){
-            boardAdapter = new BoardAdapter(getActivity(), board_dataList, board_data, rule, this, 1);
+            mode = 1;
         }
+
+        boardAdapter = new BoardAdapter(getActivity(), board_dataList, board_data, rule, this, mode);
 
         recyclerView.setAdapter(boardAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -82,14 +84,13 @@ public class Cart extends Fragment {
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String orderData = "";
-                Intent intent = new Intent(getActivity(), OldOrderSheet.class);
-//                if(getActivity().getClass() == NormalActivity.class){
-//                    intent = new Intent(getActivity(), OrderSheet.class);
-//                }
-//                else if(getActivity().getClass() == OldActivity.class){
-//                    intent = new Intent(getActivity(), OldOrderSheet.class);
-//                }
+                Intent intent = new Intent(getActivity(), OrderSheet.class);
+
+                intent.putExtra("mode", mode);
+
+                if(boardAdapter.getItemCount() == 0) return;
 
                 intent.putExtra("getItemCount", boardAdapter.getItemCount());
                 for(int i = 0; i<boardAdapter.getItemCount();i++){

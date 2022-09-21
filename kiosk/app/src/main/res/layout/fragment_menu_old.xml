@@ -9,13 +9,14 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="992dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="40dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -27,12 +28,14 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FFFFFF"
+                android:shadowDx="10"
+                android:shadowDy="10"
                 android:text="Button"
                 android:textColor="#000000"
                 android:textSize="50dp"
                 app:cornerRadius="30dp"
-                app:strokeColor="#787272"
-                app:strokeWidth="10dp" />
+                app:strokeColor="#000000"
+                app:strokeWidth="5dp" />
 
             <Button
                 android:id="@+id/button1"
@@ -42,19 +45,20 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FFFFFF"
+                android:shadowDx="10"
+                android:shadowDy="10"
                 android:text="Button"
                 android:textColor="#000000"
                 android:textSize="50dp"
                 app:cornerRadius="30dp"
-                app:strokeColor="#787272"
-                app:strokeWidth="10dp" />
+                app:strokeColor="#000000"
+                app:strokeWidth="5dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -70,8 +74,8 @@
                 android:textColor="#000000"
                 android:textSize="50dp"
                 app:cornerRadius="30dp"
-                app:strokeColor="#787272"
-                app:strokeWidth="10dp" />
+                app:strokeColor="#000000"
+                app:strokeWidth="5dp" />
 
             <Button
                 android:id="@+id/button3"
@@ -81,12 +85,14 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FFFFFF"
+                android:shadowDx="10"
+                android:shadowDy="10"
                 android:text="Button"
                 android:textColor="#000000"
                 android:textSize="50dp"
                 app:cornerRadius="30dp"
-                app:strokeColor="#787272"
-                app:strokeWidth="10dp" />
+                app:strokeColor="#000000"
+                app:strokeWidth="5dp" />
 
         </LinearLayout>
 

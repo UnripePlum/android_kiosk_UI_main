@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -24,7 +28,7 @@ public class OldActivity extends AppCompatActivity {
     ViewPager2 pager;
     TabLayout tabs;
     ScreenSlidePagerAdapter adapter;
-
+    RadioGroup radioPage;
 
 
 
@@ -47,6 +51,8 @@ public class OldActivity extends AppCompatActivity {
         adapter = new ScreenSlidePagerAdapter(this);
         tabs = findViewById(R.id.tabs);
         pager.setAdapter(adapter);
+        radioPage = findViewById(R.id.radioPage);
+
 
 
 
@@ -55,6 +61,7 @@ public class OldActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.cartlist, cart).commit();
 
 
+        MakeRadioPage();
 
         tabs.addTab(tabs.newTab().setText(tabtitles[0]));
         tabs.addTab(tabs.newTab().setText(tabtitles[1]));
@@ -84,6 +91,7 @@ public class OldActivity extends AppCompatActivity {
                         break;
 
                 }
+                MakeRadioPage();
             }
 
             @Override
@@ -115,8 +123,15 @@ public class OldActivity extends AppCompatActivity {
         });
 
 
+        //PAGE 변경을 감지
 
-
+        pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position){
+                super.onPageSelected(position);
+                radioPage.check(radioPage.getChildAt(position).getId());
+            }
+        });
 
 
 
@@ -146,7 +161,9 @@ public class OldActivity extends AppCompatActivity {
             return;
         }
         else if(pager.getCurrentItem() < NUM_PAGES-1){
+
             pager.setCurrentItem(pager.getCurrentItem()+1);
+
             return;
         }
 
@@ -157,7 +174,9 @@ public class OldActivity extends AppCompatActivity {
             return;
         }
         else if(pager.getCurrentItem() > 0){
+
             pager.setCurrentItem(pager.getCurrentItem()-1);
+
             return;
         }
     }
@@ -177,16 +196,35 @@ public class OldActivity extends AppCompatActivity {
         @Override
         public Fragment createFragment(int position) {
             OldMenu newMenuHam = new OldMenu();
+
             newMenuHam.tab = curtab;
             newMenuHam.curPage = position+1;
 
+
             return newMenuHam;
         }
+
+
 
         @Override
         public int getItemCount() {
             return NUM_PAGES;
         }
+    }
+
+
+
+    private void MakeRadioPage(){
+
+        radioPage.removeAllViews();
+
+        for(int i=0;i<NUM_PAGES;i++){
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(null);
+            radioPage.addView(radioButton);
+        }
+
+        radioPage.check(radioPage.getChildAt(0).getId());
     }
 
 

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -21,6 +23,7 @@ public class NormalActivity extends AppCompatActivity {
     ViewPager2 pager;
     TabLayout tabs;
     ScreenSlidePagerAdapter adapter;
+    RadioGroup radioPage;
     MenuReco1 menuReco1 = new MenuReco1();
 
     MenuHam1 menuHam1 = new MenuHam1();
@@ -49,6 +52,7 @@ public class NormalActivity extends AppCompatActivity {
         adapter = new ScreenSlidePagerAdapter(this);
         tabs = findViewById(R.id.tabs);
         pager.setAdapter(adapter);
+        radioPage = findViewById(R.id.radioPage);
 
 
 
@@ -56,7 +60,7 @@ public class NormalActivity extends AppCompatActivity {
         cart = new Cart();
         getSupportFragmentManager().beginTransaction().replace(R.id.cartlist, cart).commit();
 
-
+        MakeRadioPage();
 
         tabs.addTab(tabs.newTab().setText(tabtitles[0]));
         tabs.addTab(tabs.newTab().setText(tabtitles[1]));
@@ -71,6 +75,7 @@ public class NormalActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 curtab = tab.getPosition();
                 pager.setAdapter(adapter);
+                MakeRadioPage();
             }
 
             @Override
@@ -102,7 +107,13 @@ public class NormalActivity extends AppCompatActivity {
         });
 
 
-
+        pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position){
+                super.onPageSelected(position);
+                radioPage.check(radioPage.getChildAt(position).getId());
+            }
+        });
 
 
 
@@ -170,6 +181,19 @@ public class NormalActivity extends AppCompatActivity {
     public void onDeleteButtonClicked(){
 
 
+    }
+
+    private void MakeRadioPage(){
+
+        radioPage.removeAllViews();
+
+        for(int i=0;i<NUM_PAGES;i++){
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(null);
+            radioPage.addView(radioButton);
+        }
+
+        radioPage.check(radioPage.getChildAt(0).getId());
     }
 
 }

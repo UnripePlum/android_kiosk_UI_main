@@ -65,7 +65,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="264dp"
+            android:layout_height="287dp"
             android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -91,13 +91,14 @@
 
             <Button
                 android:id="@+id/cancelButton"
-                android:layout_width="380dp"
+                android:layout_width="445dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="0"
                 android:backgroundTint="#FFFFFF"
+                android:drawableLeft="@drawable/home_icon_resize"
                 android:paddingLeft="45dp"
                 android:paddingRight="45dp"
                 android:text="취소하기"
@@ -106,13 +107,14 @@
 
             <Button
                 android:id="@+id/payButton"
-                android:layout_width="380dp"
+                android:layout_width="445dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="0"
                 android:backgroundTint="#FF8D8D"
+                android:drawableLeft="@drawable/next_icon_resize"
                 android:paddingLeft="45dp"
                 android:paddingRight="45dp"
                 android:text="결제하기"

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.techtown.samplekiosk.LoopActivity;
+
 import org.techtown.samplekiosk.R;
 
 import java.util.ArrayList;
@@ -40,43 +41,97 @@ public class OrderSheet extends AppCompatActivity {
     LinearLayout step2;
     LinearLayout step3;
     Boolean buttonCheckingFinished = false;
-
+    int mode = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_sheet);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        recyclerView = findViewById(R.id.recycleView2);
-        board_dataList = new ArrayList<>();
-
-        orderAdapter = new OrderAdapter(this, board_dataList, board_data, rule);
-        recyclerView.setAdapter(orderAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        mode = bundle.getInt("mode");
+        board_dataList = new ArrayList<>();
+        orderAdapter = new OrderAdapter(this, board_dataList, board_data, rule, mode);
+
         order(intent);
 
-        TextView orderCost = findViewById(R.id.orderCost);
-        TextView saleCost = findViewById(R.id.saleCost);
-        TextView payCost = findViewById(R.id.payCost);
-        Button totalCost = findViewById(R.id.totalCostButton);
+        Toast.makeText(getApplicationContext(), ""+mode, Toast.LENGTH_LONG).show();
+        switch (mode){
+            case 0:
+                setContentView(R.layout.activity_order_sheet);
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                recyclerView = findViewById(R.id.recycleView2);
 
-        orderCost.setText(""+orderAdapter.totalcost);
-        saleCost.setText("0");
-        int payCostValue = orderAdapter.totalcost - Integer.parseInt(saleCost.getText().toString());
-        payCost.setText(""+payCostValue);
-        totalCost.setText(""+payCostValue);
+                recyclerView.setAdapter(orderAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+                setCheckOrderSheet();
+                setRadioButton();
+                break;
+            case 1:
+                setContentView(R.layout.activity_order_sheet_old);
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                Popup();
+
+                setRadioButton();
+                break;
+
+        }
+
+        Button cancelButton2 = findViewById(R.id.cancelButton2);
+        Button extraOrderButton = findViewById(R.id.extraOrderButton);
+
+        cancelButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "취소되었습니다", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), LoopActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        extraOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+    }
+    public void order(Intent intent){
+        if(intent == null) return;
+
+        Bundle bundle = intent.getExtras();
+
+        int size = bundle.getInt("getItemCount");
+
+        for(int i = 0; i<size;i++){
+            Data data = bundle.getParcelable("Order"+(i+1));
+            if(data == null) return;
+            orderAdapter.putInMap(data.name, Integer.toString(data.count), Integer.toString(data.cost), orderAdapter.getItemCount());
+
+
+        }
+
+    }
+    private static void setViewAndChildrenEnabled(View view, boolean enabled) {
+        view.setEnabled(enabled);
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                View child = viewGroup.getChildAt(i);
+                setViewAndChildrenEnabled(child, enabled);
+            }
+        }
+    }
+
+    private void setRadioButton(){
         LinearLayout step1 = findViewById(R.id.step1);
         LinearLayout step2 = findViewById(R.id.step2);
         LinearLayout step3 = findViewById(R.id.step3);
 
-
-
         setViewAndChildrenEnabled(step2, false);
         setViewAndChildrenEnabled(step3, false);
-
 
         radioGroup1 = findViewById(R.id.radioGroup1);
         radioGroup2 = findViewById(R.id.radioGroup2);
@@ -144,62 +199,37 @@ public class OrderSheet extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
-        Button cancelButton2 = findViewById(R.id.cancelButton2);
-        Button extraOrderButton = findViewById(R.id.extraOrderButton);
-
-        cancelButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "취소되었습니다", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), LoopActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-
-        extraOrderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-
     }
-    public void order(Intent intent){
-        if(intent == null) return;
 
-        Bundle bundle = intent.getExtras();
+    private void setCheckOrderSheet(){
+        TextView orderCost = findViewById(R.id.orderCost);
+        TextView saleCost = findViewById(R.id.saleCost);
+        TextView payCost = findViewById(R.id.payCost);
+        Button totalCost = findViewById(R.id.totalCostButton);
 
-        int size = bundle.getInt("getItemCount");
+        orderCost.setText(""+orderAdapter.totalcost);
+        saleCost.setText("0");
+        int payCostValue = orderAdapter.totalcost - Integer.parseInt(saleCost.getText().toString());
+        payCost.setText(""+payCostValue);
+        totalCost.setText(""+payCostValue);
+    }
+    private void Popup(){
+        Intent popupOrderIntent = new Intent(getApplicationContext(), PopUpOrderActivity.class);
+        popupOrderIntent.putExtra("getItemCount", orderAdapter.getItemCount());
+        popupOrderIntent.putExtra("mode", mode);
+//        popupOrderIntent.putExtra("totalCost", totalCost);
+//        popupOrderIntent.putExtra("saleCost", saleCost);
+//        popupOrderIntent.putExtra("orderCost", orderCost);
+//        popupOrderIntent.putExtra("payCost", payCost);
 
-        for(int i = 0; i<size;i++){
-            Data data = bundle.getParcelable("Order"+(i+1));
-            if(data == null) return;
-            orderAdapter.putInMap(data.name, Integer.toString(data.count), Integer.toString(data.cost), orderAdapter.getItemCount());
+        for(int i = 0; i<orderAdapter.getItemCount();i++){
+            Board buf = orderAdapter.getItem(i);
 
-
+            Data data = new Data(buf.getTitle(), Integer.parseInt(buf.getCount()), Integer.parseInt(buf.getCost()));
+            popupOrderIntent.putExtra("Order"+(i+1), data);
         }
-
+        startActivity(popupOrderIntent);
     }
-    private static void setViewAndChildrenEnabled(View view, boolean enabled) {
-        view.setEnabled(enabled);
-        if (view instanceof ViewGroup) {
-            ViewGroup viewGroup = (ViewGroup) view;
-            for (int i = 0; i < viewGroup.getChildCount(); i++) {
-                View child = viewGroup.getChildAt(i);
-                setViewAndChildrenEnabled(child, enabled);
-            }
-        }
-    }
-
-
-
-
 
 
 }

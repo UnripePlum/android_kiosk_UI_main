@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -42,6 +44,7 @@ public class OrderSheet extends AppCompatActivity {
     LinearLayout step3;
     Boolean buttonCheckingFinished = false;
     int mode = -1;
+    Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -231,5 +234,24 @@ public class OrderSheet extends AppCompatActivity {
         startActivity(popupOrderIntent);
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
 
+        if(intent == null) return;
+
+        if(intent.getExtras().getBoolean("Return") == true){
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    Intent LoopIntent = new Intent(getApplicationContext(), LoopActivity.class);
+                    LoopIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(LoopIntent);
+                }
+            } , 1000);
+
+        }
+
+    }
 }

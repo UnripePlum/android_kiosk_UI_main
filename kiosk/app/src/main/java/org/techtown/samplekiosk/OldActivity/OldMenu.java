@@ -41,10 +41,6 @@ public class OldMenu extends Fragment {
         setItem(tab, curPage, res);
 
 
-
-
-
-
         return rootView;
 
     }

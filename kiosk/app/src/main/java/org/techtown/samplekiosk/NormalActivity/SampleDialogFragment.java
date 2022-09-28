@@ -10,12 +10,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.techtown.samplekiosk.LoopActivity;
 
 
 public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
+
 
 
     public SampleDialogFragment() {
@@ -43,6 +47,8 @@ public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
 
         AlertDialog alert = builder.create();
 
+
+
         return alert;
     }//finish
 
@@ -57,12 +63,12 @@ public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
 
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE :
+
                     Toast.makeText(getActivity(), "ok", Toast.LENGTH_LONG).show();
-
-
-                    Intent intent = new Intent(getActivity(), LoopActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    Intent LoopIntent = new Intent(orderSheet, OrderSheet.class);
+                    LoopIntent.putExtra("Return", true);
+                    LoopIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(LoopIntent);
 
                     break;
                 case DialogInterface.BUTTON_NEUTRAL :
@@ -76,6 +82,7 @@ public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
 
         }
     }//finish -> listener 적용 ㄱㄱ
+
 
 
 }

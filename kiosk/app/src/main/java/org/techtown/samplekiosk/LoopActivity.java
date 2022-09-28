@@ -11,6 +11,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -52,6 +53,28 @@ public class LoopActivity extends AppCompatActivity implements FragmentManager.O
                 Intent intent = new Intent(getApplicationContext(), UsbService.class);
                 intent.putExtra("send", "101");
                 startService(intent);
+            }
+        });
+
+        Button button_normal = findViewById(R.id.button_normal);
+        button_normal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuStart(MODE_NORMAL);
+            }
+        });
+        Button button_old = findViewById(R.id.button_old);
+        button_old.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuStart(MODE_OLD);
+            }
+        });
+        Button button_blind = findViewById(R.id.button_blind);
+        button_blind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuStart(MODE_BLIND);
             }
         });
 

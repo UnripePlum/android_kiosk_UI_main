@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SampleKiosk"
         tools:targetApi="31">
+        <service
+            android:name=".TextToSoundService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".FindingMenuActivity"
             android:exported="false" />
@@ -35,6 +40,9 @@
             android:exported="false" />
         <activity
             android:name=".OldActivity.OldActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BlindActivity.BlindActivity"
             android:exported="false" />
         <activity
             android:name=".NormalActivity.OrderSheet"

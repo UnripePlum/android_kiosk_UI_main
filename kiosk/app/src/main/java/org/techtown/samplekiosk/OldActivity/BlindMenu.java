@@ -17,7 +17,7 @@ import org.techtown.samplekiosk.NormalActivity.Data;
 import org.techtown.samplekiosk.R;
 
 
-public class OldMenu extends Fragment {
+public class BlindMenu extends Fragment {
 
     int NumButtonInPage = 4;
     int curPage = 1;

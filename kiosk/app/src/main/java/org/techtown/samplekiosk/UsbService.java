@@ -103,6 +103,7 @@ public class UsbService extends Service implements SerialInputOutputManager.List
         else{
             setArgs(intent);
             if(intent.getExtras().getString("send") != null){
+
                 send(intent.getExtras().getString("send"));
             }
 
@@ -219,7 +220,7 @@ public class UsbService extends Service implements SerialInputOutputManager.List
             return;
         }
         try {
-            byte[] data = (str + '\n').getBytes();
+            byte[] data = (str).getBytes();
             Log.d(STATUS, "send Data : " + str);
             usbSerialPort.write(data, WRITE_WAIT_MILLIS);
         } catch (Exception e) {
@@ -248,6 +249,12 @@ public class UsbService extends Service implements SerialInputOutputManager.List
 
         String dataStr = new String(data);
         Log.d("MyService", dataStr);
+        Toast.makeText(getApplicationContext(), dataStr, Toast.LENGTH_SHORT).show();
+
+        Intent sendNumIntent = new Intent(getApplicationContext(), this.getClass());
+        sendNumIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        sendNumIntent.putExtra("keyPadValue", dataStr);
+        startActivity(sendNumIntent);
 
     }
 
@@ -255,4 +262,6 @@ public class UsbService extends Service implements SerialInputOutputManager.List
 
         Log.d(STATUS, str);
     }
+
+
 }

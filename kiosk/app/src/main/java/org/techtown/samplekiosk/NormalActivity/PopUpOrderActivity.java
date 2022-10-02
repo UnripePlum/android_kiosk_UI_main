@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.techtown.samplekiosk.R;
+import org.techtown.samplekiosk.TextToSpeechService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ import java.util.Map;
 public class PopUpOrderActivity extends AppCompatActivity {
 
     Intent intent;
+    Intent intentTTS;
     RecyclerView recyclerView;
     List<Board> board_dataList;
     OrderAdapter orderAdapter;
@@ -32,6 +34,7 @@ public class PopUpOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        intentTTS  = new Intent(this, TextToSpeechService.class);
         intent = getIntent();
         Bundle bundle = intent.getExtras();
         mode = bundle.getInt("mode");
@@ -49,6 +52,17 @@ public class PopUpOrderActivity extends AppCompatActivity {
 
         setCheckOrderSheet();
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(intent.getExtras().getString("keyPadValue") == "5"){
+            intentTTS.putExtra("word", "포장 여부를 선택해주세요");
+
+
+            finish();
+        }
     }
 
     public void order(Intent intent){

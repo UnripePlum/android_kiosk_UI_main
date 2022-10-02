@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.techtown.samplekiosk.BlindActivity.BlindActivity;
 import org.techtown.samplekiosk.LoopActivity;
 import org.techtown.samplekiosk.OldActivity.OldActivity;
 import org.techtown.samplekiosk.R;
@@ -27,13 +28,18 @@ public class Cart extends Fragment {
     public static final int REQUEST_CODE_MENU = 101;
     RecyclerView recyclerView;
     List<Board> board_dataList;
-    BoardAdapter boardAdapter;
+    public BoardAdapter boardAdapter;
     Map<String, Board> board_data = new HashMap<>();
     Map<String, Integer> rule = new HashMap<>();
     TextView totalCount;
     TextView totalCost;
+    public Button[] buttons = {null, null};
     int size = 0;
     int mode = -1;
+
+    private final int MODE_NORMAL = 0;
+    private final int MODE_OLD = 1;
+    private final int MODE_BLIND = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,10 +48,16 @@ public class Cart extends Fragment {
         ViewGroup rootView = null;
         // Inflate the layout for this fragment
         if(getActivity().getClass() == NormalActivity.class){
+            mode = MODE_NORMAL;
             rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart, container, false);
         }
         else if(getActivity().getClass() == OldActivity.class){
+            mode = MODE_OLD;
             rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart_old, container, false);
+        }
+        else if(getActivity().getClass() == BlindActivity.class){
+            mode = MODE_BLIND;
+            rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart, container, false);
         }
 
 
@@ -53,19 +65,15 @@ public class Cart extends Fragment {
         totalCost = rootView.findViewById(R.id.totalcost);
         Button cancelButton = rootView.findViewById(R.id.cancelButton);
         Button payButton = rootView.findViewById(R.id.payButton);
-
+        buttons[0] = cancelButton;
+        buttons[1] = payButton;
 
 
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
         board_dataList = new ArrayList<>();
 
-        if(getActivity().getClass() == NormalActivity.class){
-            mode = 0;
-        }
-        else if(getActivity().getClass() == OldActivity.class){
-            mode = 1;
-        }
+
 
         boardAdapter = new BoardAdapter(getActivity(), board_dataList, board_data, rule, this, mode);
 
@@ -89,6 +97,7 @@ public class Cart extends Fragment {
                 Intent intent = new Intent(getActivity(), OrderSheet.class);
 
                 intent.putExtra("mode", mode);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
                 if(boardAdapter.getItemCount() == 0) return;
 

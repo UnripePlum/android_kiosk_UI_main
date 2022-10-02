@@ -47,7 +47,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             case MODE_OLD:
                 return new OrderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.ordersheetframe_old, parent, false));
             case MODE_BLIND:
-//                return new BoardViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleframeblind, parent, false));
+                return new OrderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.ordersheetframe, parent, false));
         }
         return null;
 

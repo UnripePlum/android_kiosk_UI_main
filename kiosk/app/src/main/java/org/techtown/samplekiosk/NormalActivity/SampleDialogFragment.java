@@ -16,11 +16,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.techtown.samplekiosk.LoopActivity;
+import org.techtown.samplekiosk.TextToSpeechService;
 
 
 public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
 
-
+    Intent intentTTS;
+    int pointer = 0;
 
     public SampleDialogFragment() {
         // Required empty public constructor
@@ -31,12 +33,17 @@ public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         //어디다?
+        intentTTS = new Intent(getActivity(), TextToSpeechService.class);
+
         OrderSheet activity = (OrderSheet) getActivity();
 
         //Dialog 설정
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("안내");
         builder.setMessage("결제하시겠습니까?");
+
+        intentTTS.putExtra("word", "결제하시겠습니까? 결제하시려면 5번을 눌러주세요");
+        getActivity().startService(intentTTS);
 
         //listener 적용
         DialogListener listener = new DialogListener();
@@ -46,8 +53,6 @@ public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
         builder.setNegativeButton("아니오",listener);
 
         AlertDialog alert = builder.create();
-
-
 
         return alert;
     }//finish
@@ -59,8 +64,6 @@ public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
         public void onClick(DialogInterface dialog, int which) {
             //어디다?
             OrderSheet orderSheet = (OrderSheet) getActivity();
-
-
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE :
 
@@ -69,19 +72,22 @@ public class SampleDialogFragment extends androidx.fragment.app.DialogFragment {
                     LoopIntent.putExtra("Return", true);
                     LoopIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(LoopIntent);
-
                     break;
+
                 case DialogInterface.BUTTON_NEUTRAL :
                     Toast.makeText(getActivity(), "cancel", Toast.LENGTH_LONG).show();
-
+                    ((OrderSheet) getActivity()).isDialog = false;
                     break;
+
                 case DialogInterface.BUTTON_NEGATIVE :
                     Toast.makeText(getActivity(), "no", Toast.LENGTH_LONG).show();
+                    ((OrderSheet) getActivity()).isDialog = false;
                     break;
             }
-
         }
+
     }//finish -> listener 적용 ㄱㄱ
+
 
 
 

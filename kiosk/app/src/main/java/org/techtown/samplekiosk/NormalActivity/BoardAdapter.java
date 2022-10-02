@@ -23,7 +23,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     private final int MODE_BLIND = 2;
 
 
-    private List<Board> datas;
+    public List<Board> datas;
     private Context context;
     Map<String, Board> dict;
     Map<String, Integer> rule;
@@ -51,7 +51,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             case MODE_OLD:
                 return new BoardViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleframeold, parent, false));
             case MODE_BLIND:
-//                return new BoardViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleframeblind, parent, false));
+                return new BoardViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleframe, parent, false));
         }
         return null;
 

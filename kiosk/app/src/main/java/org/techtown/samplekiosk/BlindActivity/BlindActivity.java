@@ -1,16 +1,21 @@
-package org.techtown.samplekiosk.OldActivity;
+package org.techtown.samplekiosk.BlindActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.view.InputQueue;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -18,15 +23,17 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.techtown.samplekiosk.NormalActivity.Cart;
 import org.techtown.samplekiosk.NormalActivity.Data;
-import org.techtown.samplekiosk.R;
 
-public class OldActivity extends AppCompatActivity {
+import org.techtown.samplekiosk.R;
+import org.techtown.samplekiosk.TextToSpeechService;
+
+public class BlindActivity extends AppCompatActivity {
     Cart cart;
     ViewPager2 pager;
     TabLayout tabs;
     ScreenSlidePagerAdapter adapter;
     RadioGroup radioPage;
-
+    Intent intentTTS;
 
 
     int curtab = 0;
@@ -41,7 +48,7 @@ public class OldActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main_old);
+        setContentView(R.layout.activity_main);
 
 
         pager = findViewById(R.id.pager);
@@ -49,7 +56,7 @@ public class OldActivity extends AppCompatActivity {
         tabs = findViewById(R.id.tabs);
         pager.setAdapter(adapter);
         radioPage = findViewById(R.id.radioPage);
-
+        intentTTS = new Intent(getApplicationContext(), TextToSpeechService.class);
 
 
 
@@ -108,7 +115,6 @@ public class OldActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 onButtonBackClicked();
             }
         });
@@ -151,7 +157,8 @@ public class OldActivity extends AppCompatActivity {
 
     }
 
-    private void onButtonNextClicked(){
+    public void onButtonNextClicked(){
+
 
         if(pager.getCurrentItem() == NUM_PAGES-1) {
 
@@ -161,18 +168,24 @@ public class OldActivity extends AppCompatActivity {
 
             pager.setCurrentItem(pager.getCurrentItem()+1);
 
+            intentTTS.putExtra("word", "다음 페이지");
+            startService(intentTTS);
+
             return;
         }
 
     }
 
-    private void onButtonBackClicked(){
+    public void onButtonBackClicked(){
         if(pager.getCurrentItem() == 0) {
             return;
         }
         else if(pager.getCurrentItem() > 0){
 
             pager.setCurrentItem(pager.getCurrentItem()-1);
+
+            intentTTS.putExtra("word", "이전 페이지");
+            startService(intentTTS);
 
             return;
         }
@@ -224,5 +237,47 @@ public class OldActivity extends AppCompatActivity {
         radioPage.check(radioPage.getChildAt(0).getId());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
 
+        if(intent.getExtras().getString("keyPadValue") != null){
+            if(intent.getExtras().getString("keyPadValue").length() == 1){
+                isCursor(intent.getExtras().getString("keyPadValue"));
+
+
+            }
+        }
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+    private void isCursor(String str){
+
+        BlindMenu fragment = (BlindMenu) getSupportFragmentManager().findFragmentById((int) pager.getAdapter().getItemId(pager.getCurrentItem()));
+
+
+        switch (str){
+            case "2":
+                fragment.setPointer("up");
+                break;
+            case "4":
+                fragment.setPointer("left");
+                break;
+            case "6":
+                fragment.setPointer("right");
+                break;
+            case "8":
+                fragment.setPointer("down");
+                break;
+            case "5":
+                fragment.setPointer("confirm");
+                break;
+            case "0":
+                fragment.setPointer("delete");
+                break;
+
+        }
+
+    }
 }

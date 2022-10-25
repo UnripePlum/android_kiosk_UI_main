@@ -37,8 +37,6 @@ public class LoopActivity extends AppCompatActivity implements FragmentManager.O
         setContentView(R.layout.activity_loop);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
-
         getSupportFragmentManager().addOnBackStackChangedListener(this);
         if (savedInstanceState == null)
             getSupportFragmentManager().beginTransaction().add(R.id.fragment, new DevicesFragment(), "devices").commit();
@@ -107,9 +105,7 @@ public class LoopActivity extends AppCompatActivity implements FragmentManager.O
                 break;
             case MODE_OLD:
                 intent = new Intent(getApplicationContext(), OldActivity.class);
-
                 break;
-
             case MODE_BLIND:
                 intent = new Intent(getApplicationContext(), BlindActivity.class);
                 break;
@@ -130,7 +126,6 @@ public class LoopActivity extends AppCompatActivity implements FragmentManager.O
 //            TerminalFragment terminal = (TerminalFragment)getSupportFragmentManager().findFragmentByTag("terminal");
 //            if (terminal != null)
 //                terminal.status("USB device detected");
-
         }
         super.onNewIntent(intent);
     }

@@ -3,8 +3,6 @@ package org.techtown.samplekiosk.BlindActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,10 +13,9 @@ import android.widget.Button;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import org.techtown.samplekiosk.NormalActivity.Board;
-import org.techtown.samplekiosk.NormalActivity.Cart;
-import org.techtown.samplekiosk.NormalActivity.Data;
-import org.techtown.samplekiosk.OldActivity.OldActivity;
+import org.techtown.samplekiosk.Types.Board;
+import org.techtown.samplekiosk.Types.Cart;
+import org.techtown.samplekiosk.Types.Data;
 import org.techtown.samplekiosk.R;
 import org.techtown.samplekiosk.TextToSpeechService;
 

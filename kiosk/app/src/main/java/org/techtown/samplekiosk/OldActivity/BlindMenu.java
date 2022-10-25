@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.fragment.app.Fragment;
 
-import org.techtown.samplekiosk.NormalActivity.Data;
+import org.techtown.samplekiosk.Types.Data;
 import org.techtown.samplekiosk.R;
 
 

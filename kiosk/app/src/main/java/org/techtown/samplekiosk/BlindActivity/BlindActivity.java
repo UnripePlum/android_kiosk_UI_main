@@ -3,8 +3,6 @@ package org.techtown.samplekiosk.BlindActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
-import android.view.InputQueue;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,14 +13,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 
-import org.techtown.samplekiosk.NormalActivity.Cart;
-import org.techtown.samplekiosk.NormalActivity.Data;
+import org.techtown.samplekiosk.Types.Cart; // 수정필요. 위치, 경로 변경
+import org.techtown.samplekiosk.Types.Data; // 수정필요. 위치, 경로 변경
 
 import org.techtown.samplekiosk.R;
 import org.techtown.samplekiosk.TextToSpeechService;
@@ -35,11 +32,8 @@ public class BlindActivity extends AppCompatActivity {
     RadioGroup radioPage;
     Intent intentTTS;
 
-
     int curtab = 0;
     int NUM_PAGES = 1;
-
-
 
     String[] tabtitles = {"추천메뉴", "햄버거", "디저트/치킨", "음료/커피"};
 
@@ -158,19 +152,13 @@ public class BlindActivity extends AppCompatActivity {
     }
 
     public void onButtonNextClicked(){
-
-
         if(pager.getCurrentItem() == NUM_PAGES-1) {
-
             return;
         }
         else if(pager.getCurrentItem() < NUM_PAGES-1){
-
             pager.setCurrentItem(pager.getCurrentItem()+1);
-
             intentTTS.putExtra("word", "다음 페이지");
             startService(intentTTS);
-
             return;
         }
 
@@ -181,24 +169,17 @@ public class BlindActivity extends AppCompatActivity {
             return;
         }
         else if(pager.getCurrentItem() > 0){
-
             pager.setCurrentItem(pager.getCurrentItem()-1);
-
             intentTTS.putExtra("word", "이전 페이지");
             startService(intentTTS);
-
             return;
         }
     }
+
     public void onDeleteButtonClicked(){
-
-
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
-
-
-
         public ScreenSlidePagerAdapter(FragmentActivity fa) {
             super(fa);
         }
@@ -206,15 +187,10 @@ public class BlindActivity extends AppCompatActivity {
         @Override
         public Fragment createFragment(int position) {
             BlindMenu newMenuHam = new BlindMenu();
-
             newMenuHam.tab = curtab;
             newMenuHam.curPage = position+1;
-
-
             return newMenuHam;
         }
-
-
 
         @Override
         public int getItemCount() {
@@ -245,18 +221,15 @@ public class BlindActivity extends AppCompatActivity {
         if(intent.getExtras().getString("keyPadValue") != null){
             if(intent.getExtras().getString("keyPadValue").length() == 1){
                 isCursor(intent.getExtras().getString("keyPadValue"));
-
-
             }
         }
 
     }
+
     @RequiresApi(api = Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+
     private void isCursor(String str){
-
         BlindMenu fragment = (BlindMenu) getSupportFragmentManager().findFragmentById((int) pager.getAdapter().getItemId(pager.getCurrentItem()));
-
-
         switch (str){
             case "2":
                 fragment.setPointer("up");
@@ -276,8 +249,6 @@ public class BlindActivity extends AppCompatActivity {
             case "0":
                 fragment.setPointer("delete");
                 break;
-
         }
-
     }
 }

@@ -16,8 +16,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 
-import org.techtown.samplekiosk.NormalActivity.Cart;
-import org.techtown.samplekiosk.NormalActivity.Data;
+import org.techtown.samplekiosk.Types.Cart;
+import org.techtown.samplekiosk.Types.Data;
 import org.techtown.samplekiosk.R;
 
 public class OldActivity extends AppCompatActivity {

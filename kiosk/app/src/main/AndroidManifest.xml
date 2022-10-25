@@ -32,7 +32,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".NormalActivity.PopUpOrderActivity"
+            android:name=".OrderFragment.PopUpOrderActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
         <activity
@@ -45,14 +45,13 @@
             android:name=".BlindActivity.BlindActivity"
             android:exported="false" />
         <activity
-            android:name=".NormalActivity.OrderSheet"
+            android:name=".OrderFragment.OrderSheet"
             android:exported="false" />
         <activity
             android:name=".LoopActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>

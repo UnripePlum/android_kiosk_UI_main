@@ -17,7 +17,8 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="104dp"
-        android:background="#FF9800"/>
+        android:background="#FF9800"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"

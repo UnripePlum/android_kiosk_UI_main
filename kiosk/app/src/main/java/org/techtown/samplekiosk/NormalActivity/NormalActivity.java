@@ -16,6 +16,17 @@ import android.widget.RadioGroup;
 
 import com.google.android.material.tabs.TabLayout;
 
+import org.techtown.samplekiosk.Types.Cart;
+import org.techtown.samplekiosk.Types.Data;
+import org.techtown.samplekiosk.NormalActivity.Menu.MenuHam1;
+import org.techtown.samplekiosk.NormalActivity.Menu.MenuHam2;
+import org.techtown.samplekiosk.NormalActivity.Menu.MenuReco1;
+import org.techtown.samplekiosk.NormalActivity.Menu.Menudess1;
+import org.techtown.samplekiosk.NormalActivity.Menu.Menudess2;
+import org.techtown.samplekiosk.NormalActivity.Menu.Menudess3;
+import org.techtown.samplekiosk.NormalActivity.Menu.Menudess4;
+import org.techtown.samplekiosk.NormalActivity.Menu.Menudrink1;
+import org.techtown.samplekiosk.NormalActivity.Menu.Menudrink2;
 import org.techtown.samplekiosk.R;
 
 public class NormalActivity extends AppCompatActivity {
@@ -24,8 +35,9 @@ public class NormalActivity extends AppCompatActivity {
     TabLayout tabs;
     ScreenSlidePagerAdapter adapter;
     RadioGroup radioPage;
-    MenuReco1 menuReco1 = new MenuReco1();
 
+    //
+    MenuReco1 menuReco1 = new MenuReco1();
     MenuHam1 menuHam1 = new MenuHam1();
     MenuHam2 menuHam2 = new MenuHam2();
     Menudess1 menudess1 = new Menudess1();
@@ -47,16 +59,13 @@ public class NormalActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-
         pager = findViewById(R.id.pager);
         adapter = new ScreenSlidePagerAdapter(this);
         tabs = findViewById(R.id.tabs);
         pager.setAdapter(adapter);
         radioPage = findViewById(R.id.radioPage);
 
-
-
-
+        //Normal화면상의 cartlist를 cart fragment로 Transaction
         cart = new Cart();
         getSupportFragmentManager().beginTransaction().replace(R.id.cartlist, cart).commit();
 
@@ -80,12 +89,10 @@ public class NormalActivity extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
@@ -95,17 +102,16 @@ public class NormalActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 onButtonBackClicked();
             }
         });
+
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onButtonNextClicked();
             }
         });
-
 
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -114,14 +120,9 @@ public class NormalActivity extends AppCompatActivity {
                 radioPage.check(radioPage.getChildAt(position).getId());
             }
         });
-
-
-
-
     }
+
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
-
-
 
         public ScreenSlidePagerAdapter(FragmentActivity fa) {
             super(fa);
@@ -129,7 +130,6 @@ public class NormalActivity extends AppCompatActivity {
 
         @Override
         public Fragment createFragment(int position) {
-
             return list[curtab][position];
         }
 
@@ -138,25 +138,17 @@ public class NormalActivity extends AppCompatActivity {
             return NUM_PAGES = list[curtab].length;
         }
     }
+
     public void makeToast(Intent intent){
         if(intent == null) return;
-
         Bundle bundle = intent.getExtras();
         for(int i = 0; i<=7;i++){
-
             Data data = bundle.getParcelable("button"+i);
             if(data == null) continue;
-
             Intent intent1 = new Intent(getApplicationContext(), Cart.class);
             intent1.putExtra("order", data);
             cart.order(intent1);
-
-
-
-
-
         }
-
     }
 
     private void onButtonBackClicked(){
@@ -178,21 +170,17 @@ public class NormalActivity extends AppCompatActivity {
             return;
         }
     }
+
     public void onDeleteButtonClicked(){
-
-
     }
 
     private void MakeRadioPage(){
-
         radioPage.removeAllViews();
-
         for(int i=0;i<NUM_PAGES;i++){
             RadioButton radioButton = new RadioButton(this);
             radioButton.setText(null);
             radioPage.addView(radioButton);
         }
-
         radioPage.check(radioPage.getChildAt(0).getId());
     }
 

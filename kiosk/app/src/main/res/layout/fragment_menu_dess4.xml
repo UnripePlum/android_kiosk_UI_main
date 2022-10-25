@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="1040dp"
-    tools:context=".NormalActivity.MenuReco1">
+    tools:context=".NormalActivity.Menu.MenuReco1">
 
     <LinearLayout
         android:id="@+id/linearLayout"
